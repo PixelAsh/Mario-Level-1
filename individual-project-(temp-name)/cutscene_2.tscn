@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://cer5ri8d4mvtr"]
+
+[ext_resource type="Texture2D" uid="uid://bt5nsyqrmggm7" path="res://bagelframe.png" id="1_3sdie"]
+[ext_resource type="Script" uid="uid://bw7nf13jpllvx" path="res://cutscene_2.gd" id="1_tw1ub"]
+[ext_resource type="Texture2D" uid="uid://b5wgxrtm66bnc" path="res://backgroundtemp.png" id="1_veng8"]
+[ext_resource type="FontFile" uid="uid://dwqrueb1mkf0u" path="res://game_over.ttf" id="3_1j8hp"]
+
+[sub_resource type="Animation" id="Animation_3sdie"]
+resource_name = "cutscene2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4000001, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6000001, 2.8000002, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(145, -10), Vector2(40, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.88691455, 1.3075855, 1.4337867, 1.559988, 3.0333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["", "Wait", "Wait.", "Wait..", "Wait...", "I forgot my phone"]
+}
+
+[sub_resource type="Animation" id="Animation_veng8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(145, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_veng8"]
+_data = {
+&"RESET": SubResource("Animation_veng8"),
+&"cutscene2": SubResource("Animation_3sdie")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_tw1ub"]
+font = ExtResource("3_1j8hp")
+font_size = 31
+
+[node name="Cutscene 2" type="Node2D"]
+script = ExtResource("1_tw1ub")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_veng8")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -394.0
+offset_top = -218.0
+offset_right = 345.0
+offset_bottom = 166.0
+texture = ExtResource("1_veng8")
+stretch_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3sdie")
+hframes = 4
+vframes = 3
+frame = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(145, -10)
+zoom = Vector2(7, 7)
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 12.0
+offset_top = -49.0
+offset_right = 69.0
+offset_bottom = -20.0
+label_settings = SubResource("LabelSettings_tw1ub")
